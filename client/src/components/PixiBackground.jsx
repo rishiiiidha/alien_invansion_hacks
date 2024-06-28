@@ -48,7 +48,7 @@ const PixiBackground = ({
         };
 
         const putPixel = (x, y, brightness) => {
-          const size = 2; 
+          const size = 1.5; 
           const rgb =
             "rgba(" +
             starColor[0] +
