@@ -1,15 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
 import {
   createRoutesFromElements,
   createBrowserRouter,
   RouterProvider,
-  Route
+  Route,
 } from "react-router-dom";
-import Chat from './pages/Chat.jsx';
-import Home from './pages/Home.jsx';
-import Join from './pages/Join.jsx';
+import Chat from "./pages/Chat.jsx";
+import Home from "./pages/Home.jsx";
+import Join from "./pages/Join.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +20,7 @@ const router = createBrowserRouter(
     </Route>
   )
 );
+
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <RouterProvider router={router} />
+  <RouterProvider router={router} />
 );
