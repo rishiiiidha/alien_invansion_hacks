@@ -10,6 +10,7 @@ import {
 import Chat from "./pages/Chat.jsx";
 import Home from "./pages/Home.jsx";
 import Join from "./pages/Join.jsx";
+import './index.css'
 
 const router = createBrowserRouter(
   createRoutesFromElements(

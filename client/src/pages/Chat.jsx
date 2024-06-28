@@ -39,7 +39,6 @@ const Chat = () => {
     socket.on("message", (message) => {
       setMessages((prevMessages) => [...prevMessages, message]);
     });
-
   }, []);
 
   const sendMessage = (e) => {
@@ -50,10 +49,12 @@ const Chat = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className="flex justify-center items-center h-screen ">
+      <div className="bg-gray-800 bg-opacity-80 text-white p-6 rounded-lg shadow-lg w-full md:w-3/4 lg:w-1/2 xl:w-1/3">
         <ChatBox room={room} />
-        <Messages messages={messages} name={name} />
+      
+          <Messages messages={messages} name={name} />
+       
         <ChatInput
           message={message}
           setMessage={setMessage}
