@@ -66,7 +66,7 @@ const SurvivalGuideTimeline = () => {
             key={index}
             className={`p-5 my-2 bg-white/10 border border-white/20 rounded-lg backdrop-blur-sm cursor-pointer transition  duration-300 transform ${
               completedTasks.has(index)
-                ? "bg-red-500/30 border-red-500/40 cursor-not-allowed transform-none"
+                ? "bg-red-700/20 border-red-500/40 cursor-not-allowed transform-none"
                 : "hover:bg-white/20 hover:translate-y-[-2px]"
             }`}
             onClick={() => handleClick(index)}

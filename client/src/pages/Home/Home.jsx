@@ -47,9 +47,9 @@ function Home() {
     },
     {
       imageSrc:
-        "img2",
+        "/stories.png",
       title: "Story",
-      link: "/story",
+      link: "/stories",
     },
   ];
 
@@ -109,7 +109,7 @@ function Home() {
           </p>
         </div>
 
-        <section className="relative px-4 mt-16 w-full max-w-[1256px] max-md:mt-10 max-md:max-w-full">
+        <section className="relative px-4 mt-16 w-full max-w-[1256px] lg:ml-96 max-md:mt-10 max-md:max-w-full">
           <div className="flex gap-5 max-md:flex-col max-md:gap-0">
             {cardData2.map((card, index) => (
               <CardItem
