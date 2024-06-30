@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const mongoose = require("mongoose");
 const { createServer } = require("http");
 const socketio = require("socket.io");
 const {
@@ -9,6 +10,7 @@ const {
   getUser,
   getUsersInRoom,
 } = require("./users/user");
+const storyRoutes = require("./routes/stories");
 
 dotenv.config();
 
@@ -16,22 +18,33 @@ const app = express();
 const server = createServer(app);
 const io = socketio(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "http://localhost:5173", 
     methods: ["GET", "POST"],
   },
 });
 
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("App Connected to database!");
+  })
+  .catch((e) => {
+    console.log(e);
+  });
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://localhost:5173", 
   })
 );
-
 app.use(express.json());
+
 
 app.get("/", (req, res) => {
   res.send("Server is running");
 });
+
+app.use("/story", storyRoutes);
 
 io.on("connection", (socket) => {
   socket.on("join", ({ name, room }, callback) => {
@@ -40,7 +53,6 @@ io.on("connection", (socket) => {
 
     socket.join(user.room);
 
-    // Sending a welcome message to the user
     socket.emit("message", {
       user: "admin",
       text:
@@ -50,15 +62,6 @@ io.on("connection", (socket) => {
     });
 
     socket.broadcast.to(user.room).emit("message", {
-      user: "admin",
-      text: `${user.name} has joined the ${user.room} room!`,
-    });
-    socket.broadcast.to("victim").emit("message", {
-      user: "admin",
-      text: `${user.name} has joined the ${user.room} room!`,
-    });
-
-    socket.broadcast.to("rescuer").emit("message", {
       user: "admin",
       text: `${user.name} has joined the ${user.room} room!`,
     });
