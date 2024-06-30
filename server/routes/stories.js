@@ -1,5 +1,5 @@
 const express = require("express");
-const Story = require("../db/models/StoryModel"); // Assuming StoryModel is correctly defined in the path
+const Story = require("../db/models/StoryModel");
 
 const router = express.Router();
 

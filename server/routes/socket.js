@@ -1,7 +1,6 @@
 const express = require("express")
 const cors = require("cors")
 const router = express.Router();
-// const app = express();
 router.use(cors());
 
 router.get("/join", (req, res) => {
