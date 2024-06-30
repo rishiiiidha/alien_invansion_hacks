@@ -1,4 +1,3 @@
-// src/index.jsx (Router setup)
 import React from "react";
 import ReactDOM from "react-dom";
 import {
