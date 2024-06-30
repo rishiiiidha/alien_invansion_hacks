@@ -18,7 +18,7 @@ const app = express();
 const server = createServer(app);
 const io = socketio(server, {
   cors: {
-    origin: "http://localhost:5173", 
+    origin: "https://alien-invansion-hacks.vercel.app",
     methods: ["GET", "POST"],
   },
 });
@@ -34,7 +34,7 @@ mongoose
 
 app.use(
   cors({
-    origin: "http://localhost:5173", 
+    origin: "https://alien-invansion-hacks.vercel.app",
   })
 );
 app.use(express.json());
