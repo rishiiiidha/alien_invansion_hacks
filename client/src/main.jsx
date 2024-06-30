@@ -16,6 +16,10 @@ import Map from "./components/Map/Map";
 import Guide from "./pages/Guide/Guide";
 import AreYouHuman from "./pages/Human/AreYouHuman";
 import "./index.css";
+import Stories from "./pages/Story/Stories";
+import CreateStory from "./components/Story/CreateStory";
+import EditStory from "./components/Story/EditStory";
+import DeleteStory from "./components/Story/DeleteStory";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +31,10 @@ const router = createBrowserRouter(
       <Route path="/game" element={<Game />} />
       <Route path="/map" element={<Map />} />
       <Route path="/areyouhuman" element={<AreYouHuman />} />
+      <Route path="/stories" element={<Stories />} />
+      <Route path="/story/create" element={<CreateStory />} />
+      <Route path="/story/edit/:id" element={<EditStory />} />
+      <Route path="/story/delete/:id" element={<DeleteStory />} />
     </Route>
   )
 );

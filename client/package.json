@@ -12,6 +12,7 @@
   "dependencies": {
     "@pixi/react": "^7.1.2",
     "@splinetool/react-spline": "^4.0.0",
+    "axios": "^1.7.2",
     "face-api.js": "^0.22.2",
     "pixi.js": "^8.2.1",
     "query-string": "^9.0.0",
