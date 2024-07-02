@@ -9,9 +9,9 @@ const {
   removeUser,
   getUser,
   getUsersInRoom,
-} = require("./users/user"); 
-const storyRoutes = require("./routes/stories"); 
-const socketRoutes = require("./routes/socket"); 
+} = require("./users/user");
+const storyRoutes = require("./routes/stories");
+const socketRoutes = require("./routes/socket");
 
 dotenv.config();
 
@@ -31,9 +31,7 @@ mongoose
   .then(() => console.log("App Connected to database!"))
   .catch((e) => console.log(e));
 
-
 app.use(cors({ origin: "https://alien-invansion-hacks.vercel.app/" }));
-
 
 app.get("/", (req, res) => {
   res.send("Server is running");
@@ -41,11 +39,11 @@ app.get("/", (req, res) => {
 app.use("/", socketRoutes);
 app.use("/story", storyRoutes);
 
-
 io.on("connection", (socket) => {
   console.log("New WebSocket connection");
 
   socket.on("join", ({ name, room }, callback) => {
+    console.log(`User ${name} joining room ${room}`);
     const { error, user } = addUser({ id: socket.id, name, room });
 
     if (error) return callback(error);
@@ -70,6 +68,7 @@ io.on("connection", (socket) => {
 
   socket.on("sendMessage", (message, callback) => {
     const user = getUser(socket.id);
+    console.log(`Message from ${user.name}: ${message}`);
     io.to(user.room).emit("message", { user: user.name, text: message });
     callback();
   });
@@ -77,6 +76,7 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     const user = removeUser(socket.id);
     if (user) {
+      console.log(`${user.name} has left the room.`);
       io.to(user.room).emit("message", {
         user: "admin",
         text: `${user.name} has left the room.`,

@@ -14,7 +14,7 @@ const Chat = () => {
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const serverEndpoint = "https://alien-invansion-hacks-1.onrender.com/"; // Ensure the URL is correct
+  const serverEndpoint = "https://alien-invansion-hacks-1.onrender.com/";
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);

@@ -54,7 +54,7 @@ const SurvivalGuideTimeline = () => {
   }, [completedTasks]);
 
   return (
-    <div className="w-4/5 ml-[200px] overflow-x-hidden text-center text-white font-sans">
+    <div className="w-4/5 m-auto overflow-x-hidden text-center text-white font-sans">
       <h1 className="text-5xl mt-3">Guide for Alien Invasion Survival</h1>
       <div className="my-5 text-lg font-semibold">
         <p className="text-2xl text-green-500">Score: {score}</p>
