@@ -63,7 +63,7 @@ const FaceApi = () => {
           setTimeout(() => {
             closeWebcam();
             navigate("/join");
-          }, 8000);
+          }, 5000);
         } else {
           setIsHuman(false);
         }
