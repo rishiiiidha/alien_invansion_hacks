@@ -9,46 +9,45 @@ const {
   removeUser,
   getUser,
   getUsersInRoom,
-} = require("./users/user");
-const storyRoutes = require("./routes/stories");
+} = require("./users/user"); 
+const storyRoutes = require("./routes/stories"); 
+const socketRoutes = require("./routes/socket"); 
 
 dotenv.config();
 
 const app = express();
+app.use(express.json());
+
 const server = createServer(app);
 const io = socketio(server, {
   cors: {
-    origin: "https://alien-invansion-hacks.vercel.app",
+    origin: "http://localhost:5173", 
     methods: ["GET", "POST"],
   },
 });
 
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("App Connected to database!");
-  })
-  .catch((e) => {
-    console.log(e);
-  });
+  .then(() => console.log("App Connected to database!"))
+  .catch((e) => console.log(e));
 
-app.use(
-  cors({
-    origin: "https://alien-invansion-hacks.vercel.app",
-  })
-);
-app.use(express.json());
+
+app.use(cors({ origin: "http://localhost:5173" }));
 
 
 app.get("/", (req, res) => {
   res.send("Server is running");
 });
-
+app.use("/", socketRoutes);
 app.use("/story", storyRoutes);
 
+
 io.on("connection", (socket) => {
+  console.log("New WebSocket connection");
+
   socket.on("join", ({ name, room }, callback) => {
     const { error, user } = addUser({ id: socket.id, name, room });
+
     if (error) return callback(error);
 
     socket.join(user.room);
