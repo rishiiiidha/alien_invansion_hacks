@@ -21,7 +21,7 @@
             <h2>Features:</h2>
             <ul>
                 <li>Managed website by a space company for Planet Hakuya with communication features.</li>
-                <li>Uses charts and webcams to distinguish between human and alien users.</li>
+                <li>Uses webcams(face-api) to distinguish between human and alien users.</li>
                 <li>Provides a detailed survival guide and rewards users who follow it with a score.</li>
                 <li>Displays key locations on Planet Hakuya, marking safe (green) and alien-infested (red) areas.</li>
                 <li>Includes an interactive game for alien elimination and a story-sharing feature for user experiences.</li>
