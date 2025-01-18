@@ -1,6 +1,6 @@
 <body>
     <header>
-        <h1>Alien Invasion Hacks | SandCodes Hackathon</h1>
+        <h1>Alien Invasion Hacks </h1>
         <h6>Navigate, survive, and thrive with our humorous yet effective guide to outsmarting alien invaders on Planet Hackunia!</h6>
     </header>
     <main>
